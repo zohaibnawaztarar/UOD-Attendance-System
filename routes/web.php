@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+
+
+Route::group(['middleware'=> ['web']], function (){
+    Route::get('/', function () {
+        return view('home');
+    });
+
+    Route::post('/signup',[
+        'uses' => 'UserController@PostSignUp',
+        'as' => 'signup'
+    ]);
 });
