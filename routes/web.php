@@ -18,8 +18,18 @@ Route::group(['middleware'=> ['web']], function (){
         return view('home');
     });
 
-    Route::post('/signup',[
-        'uses' => 'UserController@PostSignUp',
+    Route::post('/signup', [
+        'uses' => 'UserController@postSignUp',
         'as' => 'signup'
+    ]);
+
+    Route::post('/signin', [
+        'uses' => 'UserController@postSignIn',
+        'as' => 'signin'
+    ]);
+
+    Route::get('/dashboard', [
+        'uses' => 'UserController@getDashboard',
+        'as' => 'dashboard'
     ]);
 });
