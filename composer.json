@@ -38,7 +38,9 @@
             "App\\": "app/"
         },
         "classmap": [
-            "database/seeds",
+            "database",
+            "database/seeds/RoleTableSeeder.php",
+            "database/seeds/UserTableSeeder.php",
             "database/factories"
         ]
     },

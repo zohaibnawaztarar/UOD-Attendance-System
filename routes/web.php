@@ -33,4 +33,44 @@ Route::group(['middleware'=> ['web']], function (){
         'as' => 'dashboard',
         'middleware' => 'auth'
     ]);
+
+     Route::get('/lecturers', [
+        'uses' => 'AppController@getLecturerPage',
+        'as' => 'lecturers',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer', 'School Admin']
+    ]);
+
+    Route::get('/schoolAdmin', [
+        'uses' => 'AppController@getSchoolAdminPage',
+        'as' => 'schoolAdmin',
+        'middleware' => 'roles',
+        'roles' => ['School Admin']
+    ]);
+
+    Route::get('/systemAdmin', [
+        'uses' => 'AppController@getSystemAdminPage',
+        'as' => 'systemAdmin',
+        'middleware' => 'roles',
+        'roles' => ['System Admin']
+    ]);
+
+    Route::get('/students', [
+        'uses' => 'AppController@getStudentPage',
+        'as' => 'students',
+        'middleware' => 'roles',
+        'roles' => ['Student']
+    ]);
+
+    Route::post('/systemAdmin/assign-roles', [
+        'uses' => 'AppController@postAdminAssignRoles',
+        'as' => 'systemAdmin.assign',
+        'middleware' => 'roles',
+        'roles' => ['System Admin']
+    ]);
+
+    Route::get('/logout', [
+        'uses' => 'UserController@getLogout',
+        'as' => 'logout'
+    ]);
 });
