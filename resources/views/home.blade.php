@@ -18,6 +18,10 @@ Welcome
                     <input class="form-control" type="text" name="first_name" id="first_name" value="{{Request::old('first_name')}}">
                 </div>
                 <div class="form-group">
+                    <label for="first_name">Your Last Name</label>
+                    <input class="form-control" type="text" name="last_name" id="last_name" value="{{Request::old('last_name')}}">
+                </div>
+                <div class="form-group">
                     <label for="password">Your Password</label>
                     <input class="form-control" type="password" name="password" id="password" value="{{Request::old('password')}}">
                 </div>
