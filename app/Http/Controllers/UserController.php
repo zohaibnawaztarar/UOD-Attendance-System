@@ -12,6 +12,11 @@ class UserController extends Controller
     {
         return view('dashboard');
     }
+
+    public function getRegister()
+    {
+        return view('register');
+    }
     public function postSignUp(Request $request)
     {
         $this->validate($request, [

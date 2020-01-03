@@ -1,14 +1,22 @@
-<h1>This is dashboard page for IT Staff only</h1>
-    @extends('layouts.master')
+@extends('layouts.master')
+
+@section('title')
+    Welcome
+@endsection
+@section('subNav')
+    {{-- this section will not be shown --}}
+@stop
+
 
 @section('content')
+    <h1>This is dashboard page for School Staff only</h1>
     <table>
         <thead>
         <th>First Name</th>
         <th>Last Name</th>
         <th>E-Mail</th>
-        <th>User</th>
-        <th>Author</th>
+        <th>Student</th>
+        <th>Lecturer/th>
         <th>Admin</th>
         <th></th>
         </thead>
