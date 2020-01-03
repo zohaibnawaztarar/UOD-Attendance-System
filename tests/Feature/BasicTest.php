@@ -13,10 +13,23 @@ class BasicTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testHomepage()
     {
         $response = $this->get('/');
-
         $response->assertStatus(200);
     }
+
+    public function testDashboard()
+    {
+        $response = $this->get('/dashboard');
+        $response->assertStatus(302);
+    }
+    
+    public function testRegister()
+    {
+        $response = $this->get('/register');
+        $response->assertStatus(200);
+    }
+
+
 }
