@@ -34,6 +34,11 @@ Route::group(['middleware'=> ['web']], function (){
         'middleware' => 'auth'
     ]);
 
+    Route::get('/register', [
+        'uses' => 'UserController@getRegister',
+        'as' => 'register',
+    ]);
+
      Route::get('/lecturers', [
         'uses' => 'AppController@getLecturerPage',
         'as' => 'lecturers',
