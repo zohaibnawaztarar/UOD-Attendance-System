@@ -21,6 +21,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('lecturers') }}">Lecturer</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('students') }}">Students</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('systemAdmin') }}">System Admin</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('addSchoolStaff') }}">Add School Staff</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('schoolAdmin') }}">School Admin</a></li>
                 <span id="separator"></span>
                 @if(!Auth::check())

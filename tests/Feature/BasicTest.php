@@ -24,7 +24,7 @@ class BasicTest extends TestCase
         $response = $this->get('/dashboard');
         $response->assertStatus(302);
     }
-    
+
     public function testRegister()
     {
         $response = $this->get('/register');

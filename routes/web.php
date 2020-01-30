@@ -28,6 +28,11 @@ Route::group(['middleware'=> ['web']], function (){
         'as' => 'signin'
     ]);
 
+    Route::post('/schoolAdmin/addModule', [
+        'uses' => 'UserController@postModule',
+        'as' => 'schoolAdmin.addModule'
+    ]);
+
     Route::get('/dashboard', [
         'uses' => 'UserController@getDashboard',
         'as' => 'dashboard',
@@ -77,5 +82,26 @@ Route::group(['middleware'=> ['web']], function (){
     Route::get('/logout', [
         'uses' => 'UserController@getLogout',
         'as' => 'logout'
+    ]);
+
+    Route::get('qr-code-g', function () {
+        \QrCode::size(500)
+            ->format('png')
+            ->generate('ItSolutionStuff.com', public_path('images/qrcode.png'));
+
+        return view('qrCode');
+
+    });
+
+    Route::get('/addSchoolStaff', [
+        'uses' => 'AppController@getAddSchoolStaff',
+        'as' => 'addSchoolStaff',
+        'middleware' => 'roles',
+        'roles' => ['System Admin']
+    ]);
+
+    Route::post('/addSchoolStaff', [
+        'uses' => 'UserController@postSchoolStaff',
+        'as' => 'addSchoolStaff'
     ]);
 });
