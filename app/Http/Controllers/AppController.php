@@ -26,6 +26,12 @@ class AppController extends Controller
         return view('systemAdmin', ['users' => $users]);
     }
 
+    public function getAddSchoolStaff()
+    {
+        $users = User::all();
+        return view('addSchoolStaff', ['users' => $users]);
+    }
+
     public function getSchoolAdminPage()
     {
 
