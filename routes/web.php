@@ -48,7 +48,7 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'AppController@getLecturerPage',
         'as' => 'lecturers',
         'middleware' => 'roles',
-        'roles' => ['Lecturer', 'School Admin']
+        'roles' => ['Lecturer']
     ]);
 
     Route::get('/schoolAdmin', [
@@ -93,15 +93,29 @@ Route::group(['middleware'=> ['web']], function (){
 
     });
 
+    // Route for Add School Staff page
     Route::get('/addSchoolStaff', [
         'uses' => 'AppController@getAddSchoolStaff',
         'as' => 'addSchoolStaff',
         'middleware' => 'roles',
         'roles' => ['System Admin']
     ]);
-
+    // Route for Add School Staff page
     Route::post('/addSchoolStaff', [
         'uses' => 'UserController@postSchoolStaff',
         'as' => 'addSchoolStaff'
+    ]);
+
+    // Route for Add Lecturer page
+    Route::get('/addLecturer', [
+        'uses' => 'AppController@getaddLecturer',
+        'as' => 'addLecturer',
+        'middleware' => 'roles',
+        'roles' => ['School Admin']
+    ]);
+    // Route for Add Lecturer page
+    Route::post('/addLecturer', [
+        'uses' => 'UserController@postLecturer',
+        'as' => 'addLecturer'
     ]);
 });

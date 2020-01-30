@@ -72,6 +72,33 @@ class UserController extends Controller
         return redirect()->route('dashboard');
     }
 
+    public function postLecturer(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email|unique:users',
+            'first_name' => 'required|max:120',
+            'last_name' => 'required|max:120',
+            'password' => 'required|min:6'
+        ]);
+        $email = $request['email'];
+        $first_name = $request['first_name'];
+        $last_name = $request['last_name'];
+        $password = bcrypt($request['password']);
+
+        $user = new User();
+        $user->email = $email;
+        $user->first_name = $first_name;
+        $user->last_name = $last_name;
+        $user->password = $password;
+
+        $user->save();
+        $user->roles()->attach(Role::where('name', 'Lecturer')->first());
+
+        // Auth::login($user);
+
+        return redirect()->route('dashboard');
+    }
+
     public function postSignIn(Request $request)
     {
 
