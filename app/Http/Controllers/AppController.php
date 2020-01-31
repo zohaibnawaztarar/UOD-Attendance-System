@@ -37,6 +37,12 @@ class AppController extends Controller
 
         return view('schoolAdmin');
     }
+    public function getaddLecturer()
+    {
+        $users = User::all();
+        return view('addLecturer', ['users' => $users]);
+    }
+
 
     public function postAdminAssignRoles(Request $request)
     {
