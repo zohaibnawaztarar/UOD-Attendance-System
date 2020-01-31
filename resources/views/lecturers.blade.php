@@ -8,4 +8,6 @@
 @stop
 @section('content')
     <h1>This is dashboard page for Lecturers only</h1>
+
+    {!! QrCode::size(250)->generate('1800') !!}
 @endsection

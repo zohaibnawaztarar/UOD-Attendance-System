@@ -26,6 +26,12 @@ class AppController extends Controller
         return view('systemAdmin', ['users' => $users]);
     }
 
+    public function getAddSchoolStaff()
+    {
+        $users = User::all();
+        return view('addSchoolStaff', ['users' => $users]);
+    }
+
     public function getSchoolAdminPage()
     {
 
@@ -46,6 +52,14 @@ class AppController extends Controller
             $user->roles()->attach(Role::where('name', 'School Admin')->first());
         }
         return redirect()->back();
+    }
+
+
+    public function getDeleteStaff ($user_id)
+    {
+        $user = user::where('id', $user_id)->first();
+        $user->delete();
+        return redirect()->route('systemAdmin')->with(['message' => 'Successfully delete!']);
     }
 
 
