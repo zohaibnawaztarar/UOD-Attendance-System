@@ -61,4 +61,12 @@ class AppController extends Controller
     }
 
 
+    public function getDeleteStaff ($user_id)
+    {
+        $user = user::where('id', $user_id)->first();
+        $user->delete();
+        return redirect()->route('systemAdmin')->with(['message' => 'Successfully delete!']);
+    }
+
+
 }
