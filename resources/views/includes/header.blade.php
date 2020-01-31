@@ -24,6 +24,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('addSchoolStaff') }}">Add School Staff</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('schoolAdmin') }}">School Admin</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('addLecturer') }}">Add Lecturer</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('deleteModule') }}">Delete Module</a></li>
                 <span id="separator"></span>
                 @if(!Auth::check())
                     <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>

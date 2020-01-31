@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Role;
+use App\Module;
 use Illuminate\Http\Request;
 class AppController extends Controller
 {
@@ -30,6 +31,12 @@ class AppController extends Controller
     {
         $users = User::all();
         return view('addSchoolStaff', ['users' => $users]);
+    }
+
+    public function getDeleteModule()
+    {
+        $modules = Module::all();
+        return view('deleteModule', ['modules' => $modules]);
     }
 
     public function getSchoolAdminPage()
@@ -66,6 +73,13 @@ class AppController extends Controller
         $user = user::where('id', $user_id)->first();
         $user->delete();
         return redirect()->route('systemAdmin')->with(['message' => 'Successfully delete!']);
+    }
+
+    public function getDeleteModuledb ($module_id)
+    {
+        $module = module::where('id', $module_id)->first();
+        $module->delete();
+        return redirect()->route('deleteModule')->with(['message' => 'Successfully delete!']);
     }
 
 
