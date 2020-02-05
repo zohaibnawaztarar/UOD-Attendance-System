@@ -24,7 +24,7 @@
         @foreach($users as $user)
 
             <tr>
-                <form action="{{ route('systemAdmin.delete', ['user_id' => $user->id]) }}" method="get">
+                <form action="{{ route('schoolAdmin.delete', ['user_id' => $user->id]) }}" method="get">
                     <td>{{ $user->first_name }}</td>
                     <td>{{ $user->last_name }}</td>
                     <td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>

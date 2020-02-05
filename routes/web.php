@@ -149,6 +149,14 @@ Route::group(['middleware'=> ['web']], function (){
         'roles' => ['School Admin']
     ]);
 
+    // Route to delete lecturers accounts
+    Route::get('/schoolAdmin/deleteStaff/{user_id}', [
+        'uses' => 'AppController@getDeleteStaff',
+        'as' => 'schoolAdmin.delete',
+        'middleware' => 'roles',
+        'roles' => ['School Admin']
+    ]);
+
     // Route for delete Module page
     Route::get('/deleteModule', [
         'uses' => 'AppController@getDeleteModule',
