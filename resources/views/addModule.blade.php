@@ -35,16 +35,7 @@
                                 </div>
 
                         </form>
-                        @if (count($errors) > 0)
-                            <div class="row">
-                                <div class="col-md-4"></div>
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li><div align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$error}}</div></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+
                     </div>
                 </div>
             </div>

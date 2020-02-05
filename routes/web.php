@@ -32,6 +32,34 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'UserController@postModule',
         'as' => 'schoolAdmin.addModule'
     ]);
+    // route for add Location
+    Route::post('/schoolAdmin/addLocation', [
+        'uses' => 'UserController@postlocation',
+        'as' => 'schoolAdmin.addLocation'
+    ]);
+
+    Route::get('/addLocation', [
+        'uses' => 'AppController@getAddLocationPage',
+        'as' => 'addLocation',
+        'middleware' => 'roles',
+        'roles' => ['School Admin']
+    ]);
+
+    // Route to delete locations
+    Route::get('/deleteLocation', [
+        'uses' => 'AppController@getDeleteLocation',
+        'as' => 'deleteLocation',
+        'middleware' => 'roles',
+        'roles' => ['School Admin']
+    ]);
+
+    // Route to delete locations
+    Route::get('/deleteLocation/{location_id}', [
+        'uses' => 'AppController@getDeleteLocationdb',
+        'as' => 'deleteLocation.delete',
+        'middleware' => 'roles',
+        'roles' => ['School Admin']
+    ]);
 
     Route::get('/dashboard', [
         'uses' => 'UserController@getDashboard',
@@ -173,6 +201,7 @@ Route::group(['middleware'=> ['web']], function (){
         'roles' => ['School Admin']
     ]);
 
+    // Route for change password
     Route::post('/changePassword','UserController@changePassword')->name('changePassword');
 
 });
