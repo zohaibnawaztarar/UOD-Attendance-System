@@ -9,6 +9,7 @@
 
 
 @section('content')
+    @include('includes.message-block')
     <h1>This is dashboard page for School Staff only</h1>
     <table>
         <thead>

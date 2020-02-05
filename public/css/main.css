@@ -298,7 +298,7 @@ iframe {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.65);
+    background-color: rgba(0,0,0,0.0);
 }
 
 .wrap-login100 {
@@ -308,6 +308,9 @@ iframe {
 
     background: transparent;
 }
+#body{
+    background-color: #0b2e13;
+}
 
 
 /*------------------------------------------------------------------
@@ -316,7 +319,7 @@ iframe {
 .login100-form {
     width: 100%;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #f9f9f9;
 }
 
 .login100-form-logo {

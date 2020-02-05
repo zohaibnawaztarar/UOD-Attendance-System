@@ -1,39 +1,41 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-        <a class="navbar-brand" href="/">UOD</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">University of Dundee</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    </li>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('lecturers') }}">Lecturers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('students') }}">Students</a>
+                    </li>
 
-
-                <li class="nav-item"><a class="nav-link" href="{{ route('lecturers') }}">Lecturer</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('students') }}">Students</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('systemAdmin') }}">System Admin</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('addSchoolStaff') }}">Add School Staff</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('schoolAdmin') }}">School Admin</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('addLecturer') }}">Add Lecturer</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('deleteModule') }}">Delete Module</a></li>
-                <span id="separator"></span>
-                @if(!Auth::check())
-                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Sign In</a></li>
-                @else
-                    <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
-                @endif
-
-            </ul>
+                    @if(!Auth::check())
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('register') }}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('home') }}">Sign In</a></li>
+                    @else
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('logout') }}">Logout</a></li>
+                    @endif
+                </ul>
+            </div>
         </div>
     </nav>
 </header>
+
+
+

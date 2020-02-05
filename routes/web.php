@@ -39,6 +39,12 @@ Route::group(['middleware'=> ['web']], function (){
         'middleware' => 'auth'
     ]);
 
+    Route::get('/changePassword', [
+        'uses' => 'UserController@getChangePassword',
+        'as' => 'changePassword',
+        'middleware' => 'auth'
+    ]);
+
     Route::get('/register', [
         'uses' => 'UserController@getRegister',
         'as' => 'register',
@@ -56,6 +62,13 @@ Route::group(['middleware'=> ['web']], function (){
         'as' => 'schoolAdmin',
         'middleware' => 'roles',
         'roles' => ['School Admin']
+    ]);
+
+    Route::get('/addModule', [
+        'uses' => 'AppController@getAddModulePage',
+        'as' => 'addModule',
+        'middleware' => 'roles',
+        'roles' => ['School Admin', 'Lecturer']
     ]);
 
     Route::get('/systemAdmin', [
@@ -128,6 +141,14 @@ Route::group(['middleware'=> ['web']], function (){
         'as' => 'addLecturer'
     ]);
 
+    // Route for delete Lecturers
+    Route::get('/deleteLecturers', [
+        'uses' => 'AppController@getDeleteLecturersPage',
+        'as' => 'deleteLecturers',
+        'middleware' => 'roles',
+        'roles' => ['School Admin']
+    ]);
+
     // Route for delete Module page
     Route::get('/deleteModule', [
         'uses' => 'AppController@getDeleteModule',
@@ -136,11 +157,14 @@ Route::group(['middleware'=> ['web']], function (){
         'roles' => ['School Admin']
     ]);
 
-    // Route to delete school Staff accounts
+    // Route to delete Module
     Route::get('/deleteModule/{module_id}', [
         'uses' => 'AppController@getDeleteModuledb',
         'as' => 'deleteModule.delete',
         'middleware' => 'roles',
         'roles' => ['School Admin']
     ]);
+
+    Route::post('/changePassword','UserController@changePassword')->name('changePassword');
+
 });
