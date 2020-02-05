@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use App\Module;
+use App\Locations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use phpDocumentor\Reflection\Location;
 
 
 class UserController extends Controller
@@ -146,6 +148,29 @@ class UserController extends Controller
         // $user->roles()->attach(Role::where('name', 'Student')->first());
 
         //Auth::login($user);
+
+        return redirect()->back()->with(['message' => 'Successfully Added!']);
+    }
+
+
+    public function postLocation(Request $request)
+    {
+        $this->validate($request, [
+            'building' => 'required|max:120',
+            'room' => 'required|max:120',
+            'capacity' => 'required|max:120'
+        ]);
+        $building = $request['building'];
+        $room = $request['room'];
+        $capacity = $request['capacity'];
+
+        $location = new Locations();
+        $location->building = $building;
+        $location->room = $room;
+        $location->capacity = $capacity;
+
+        $location->save();
+
 
         return redirect()->back()->with(['message' => 'Successfully Added!']);
     }

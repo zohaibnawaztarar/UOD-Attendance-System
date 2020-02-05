@@ -100,6 +100,17 @@
                     </div>
 
 
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLayouts"
+                    ><div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                        Locations
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
+                    <div class="collapse" id="collapseLocation" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{ route('addLocation') }}">Add Locations</a>
+                            <a class="nav-link" href="{{ route('deleteLocation') }}">Delete Locations</a></nav>
+                    </div>
+
+
 
 
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"

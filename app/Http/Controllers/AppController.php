@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use App\Module;
+use App\Locations;
 use Illuminate\Http\Request;
 class AppController extends Controller
 {
@@ -67,6 +68,25 @@ class AppController extends Controller
     {
 
         return view('addModule');
+    }
+
+    public function getAddLocationPage()
+    {
+        $locations = Locations::all();
+        return view('addLocation', ['locations' => $locations]);
+    }
+
+    public function getDeleteLocation()
+    {
+        $locations = Locations::all();
+        return view('deleteLocation', ['locations' => $locations]);
+    }
+
+    public function getDeletelocationdb ($location_id)
+    {
+        $location = locations::where('id', $location_id)->first();
+        $location->delete();
+        return redirect()->back()->with(['message' => 'Successfully deleted!']);
     }
 
     public function getaddLecturer()
