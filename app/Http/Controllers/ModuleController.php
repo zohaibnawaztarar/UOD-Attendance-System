@@ -30,7 +30,7 @@ class ModuleController extends Controller
 
         //Auth::login($user);
 
-        return redirect()->route('dashboard');
+        return redirect()->back()->with->with(['message' => 'Successfully added!']);
     }
 
 

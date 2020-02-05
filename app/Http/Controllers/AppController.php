@@ -20,11 +20,29 @@ class AppController extends Controller
     {
         return view('students');
     }
-
-    public function getSystemAdminPage()
+// this gets all users from system
+   /* public function getSystemAdminPage()
     {
         $users = User::all();
         return view('systemAdmin', ['users' => $users]);
+    }*/
+
+    // Only gets the users with school Admin roles
+    public function getSystemAdminPage()
+    {
+        $users = User::whereHas('roles', function($q){
+        $q->where('name', 'School Admin');
+    })->get();
+        return view('systemAdmin', ['users' => $users]);
+    }
+
+    // Only gets the users with school Admin roles
+    public function getDeleteLecturersPage()
+    {
+        $users = User::whereHas('roles', function($q){
+            $q->where('name', 'Lecturer');
+        })->get();
+        return view('deleteLecturers', ['users' => $users]);
     }
 
     public function getAddSchoolStaff()
@@ -44,6 +62,13 @@ class AppController extends Controller
 
         return view('schoolAdmin');
     }
+
+    public function getAddModulePage()
+    {
+
+        return view('addModule');
+    }
+
     public function getaddLecturer()
     {
         $users = User::all();
@@ -72,14 +97,16 @@ class AppController extends Controller
     {
         $user = user::where('id', $user_id)->first();
         $user->delete();
-        return redirect()->route('systemAdmin')->with(['message' => 'Successfully delete!']);
+        return redirect()->back()->with(['message' => 'Successfully deleted!']);
     }
+
+
 
     public function getDeleteModuledb ($module_id)
     {
         $module = module::where('id', $module_id)->first();
         $module->delete();
-        return redirect()->route('deleteModule')->with(['message' => 'Successfully delete!']);
+        return redirect()->back()->with(['message' => 'Successfully deleted!']);
     }
 
 

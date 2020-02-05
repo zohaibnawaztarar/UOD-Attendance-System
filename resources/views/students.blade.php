@@ -7,6 +7,7 @@
     {{-- this section will not be shown --}}
 @stop
 @section('content')
+    @include('includes.message-block')
     <h1>This is dashboard page for School Staff only</h1>
 
 
