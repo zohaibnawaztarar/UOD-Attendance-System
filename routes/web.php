@@ -32,6 +32,14 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'UserController@postModule',
         'as' => 'schoolAdmin.addModule'
     ]);
+
+    // route to add new sessions
+    Route::post('/addSession/addSession', [
+        'uses' => 'UserController@postSession',
+        'as' => 'addSession.addSession'
+    ]);
+
+
     // route for add Location
     Route::post('/schoolAdmin/addLocation', [
         'uses' => 'UserController@postlocation',
@@ -85,6 +93,7 @@ Route::group(['middleware'=> ['web']], function (){
         'roles' => ['Lecturer']
     ]);
 
+
     Route::get('/schoolAdmin', [
         'uses' => 'AppController@getSchoolAdminPage',
         'as' => 'schoolAdmin',
@@ -96,7 +105,7 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'AppController@getAddModulePage',
         'as' => 'addModule',
         'middleware' => 'roles',
-        'roles' => ['School Admin', 'Lecturer']
+        'roles' => ['School Admin']
     ]);
 
     Route::get('/systemAdmin', [
@@ -200,6 +209,16 @@ Route::group(['middleware'=> ['web']], function (){
         'middleware' => 'roles',
         'roles' => ['School Admin']
     ]);
+
+    // route to pull modules and locations for add session page
+    Route::get('/addSession', [
+        'uses' => 'AppController@getModuleLocation',
+        'as' => 'addSession',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
+
 
     // Route for change password
     Route::post('/changePassword','UserController@changePassword')->name('changePassword');

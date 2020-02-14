@@ -18,12 +18,6 @@
                         <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ route('lecturers') }}">Lecturers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ route('students') }}">Students</a>
-                    </li>
 
                     @if(!Auth::check())
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('register') }}">Register</a></li>
@@ -31,7 +25,7 @@
                     @else
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('logout') }}">Logout</a></li>
                     @endif
-                    
+
                 </ul>
             </div>
         </div>
