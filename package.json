@@ -19,6 +19,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
-        "instascan": "^1.0.0"
+        "instascan": "^1.0.0",
+        "md-date-time-picker": "^2.3.0"
     }
 }

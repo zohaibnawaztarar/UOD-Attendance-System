@@ -5,6 +5,7 @@ use App\User;
 use App\Role;
 use App\Module;
 use App\Locations;
+use App\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -148,6 +149,45 @@ class UserController extends Controller
         // $user->roles()->attach(Role::where('name', 'Student')->first());
 
         //Auth::login($user);
+
+        return redirect()->back()->with(['message' => 'Successfully Added!']);
+    }
+
+    //Function to post session form date to database
+    public function postSession(Request $request)
+    {
+        $this->validate($request, [
+            'startTime' => 'required|max:120',
+            'endTime' => 'required|max:120',
+            'startDate' => 'required|max:120',
+            'endDate' => 'required|max:120',
+            'day' => 'required|max:120',
+            'module' => 'required|max:120',
+            'location' => 'required|max:120',
+        ]);
+        $startTime = $request['startTime'];
+        $endTime = $request['endTime'];
+        $startDate = $request['startDate'];
+        $endDate = $request['endDate'];
+        $day = $request['day'];
+        $module = $request['module'];
+        $location = $request['location'];
+
+
+
+        $session = new Session();
+        $session->startTime = $startTime;
+        $session->endTime = $endTime;
+        $session->startDate = $startDate;
+        $session->endDate = $endDate;
+        $session->day = $day;
+        $session->module = $module;
+        $session->location = $location;
+
+
+
+
+        $session->save();
 
         return redirect()->back()->with(['message' => 'Successfully Added!']);
     }

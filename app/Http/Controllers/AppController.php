@@ -4,6 +4,7 @@ use App\User;
 use App\Role;
 use App\Module;
 use App\Locations;
+use App\Session;
 use Illuminate\Http\Request;
 class AppController extends Controller
 {
@@ -15,6 +16,11 @@ class AppController extends Controller
     public function getLecturerPage()
     {
         return view('lecturers');
+    }
+
+    public function getAddSessionPage()
+    {
+        return view('addSession');
     }
 
     public function getStudentPage()
@@ -128,6 +134,25 @@ class AppController extends Controller
         $module->delete();
         return redirect()->back()->with(['message' => 'Successfully deleted!']);
     }
+
+    public function getAddSessions()
+    {
+        $sessions = session::all();
+        return view('addSession', ['sessions' => $sessions]);
+        $modules = module::all();
+        $module = module::where('id', $module_id)->first();
+        return view('addSession', ['modules' => $modules]);
+    }
+
+    public function getModuleLocation()
+    {
+        $modules = Module::all();
+        $locations = Locations::all();
+        return view('addSession', ['modules' => $modules], ['locations' => $locations]);
+
+
+    }
+
 
 
 }
