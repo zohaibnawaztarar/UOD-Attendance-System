@@ -220,6 +220,26 @@ Route::group(['middleware'=> ['web']], function (){
 
 
 
+
+
+
+
+    // Route for enrol students to module page
+
+    Route::post('/moduleEnrolment/moduleEnrolment', [
+        'uses' => 'UserController@postModuleEnrolment',
+        'as' => 'moduleEnrolment.moduleEnrolment'
+    ]);
+
+    // route to pull modules and students for module enrolment page
+    Route::get('/moduleEnrolment', [
+        'uses' => 'AppController@getmoduleStudents',
+        'as' => 'moduleEnrolment',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
+
     // Route for change password
     Route::post('/changePassword','UserController@changePassword')->name('changePassword');
 

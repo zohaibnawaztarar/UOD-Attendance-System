@@ -7,7 +7,7 @@ use APP\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ModuleController extends Controller
+class SessionController extends Controller
 {
 
     public function postModule(Request $request)

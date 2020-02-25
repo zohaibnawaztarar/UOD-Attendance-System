@@ -5,6 +5,7 @@ use App\Role;
 use App\Module;
 use App\Locations;
 use App\Session;
+use App\Enrolment;
 use Illuminate\Http\Request;
 class AppController extends Controller
 {
@@ -141,14 +142,45 @@ class AppController extends Controller
         return view('addSession', ['sessions' => $sessions]);
         $modules = module::all();
         $module = module::where('id', $module_id)->first();
-        return view('addSession', ['modules' => $modules]);
+        //$teacher = User::whereHas('roles', function($q){$q->whereIn('role_id', ['2']);})->get();
+
+        return view('addSession', ['modules' => $modules] );
+        /*$teachers = User::whereHas('roles', function($q){
+            $q->where('name', 'Lecturer');
+        })->get();*/
+        /*$teachers = User::all();
+        return view('addSession',  ['teachers' => $teachers] );*/
     }
 
     public function getModuleLocation()
     {
         $modules = Module::all();
         $locations = Locations::all();
-        return view('addSession', ['modules' => $modules], ['locations' => $locations]);
+        /*$teachers = User::whereHas('roles', function($q){
+            $q->where('name', 'Lecturer');
+        })->get();*/
+
+
+
+        //return view('addSession',  ['teachers' => $teachers] );
+        $teachers = User::whereHas('roles', function($q){
+            $q->where('name', 'Lecturer');
+        })->get();
+        return view('addSession', ['modules' => $modules], ['locations' => $locations, 'teachers' => $teachers]);
+
+
+
+
+    }
+
+
+
+    public function getModuleStudents()
+    {
+        $modules = Module::all();
+        //$students = User::all();
+        $students = User::whereHas('roles', function($q){$q->whereIn('role_id', ['1']);})->get();
+        return view('moduleEnrolment', ['modules' => $modules], ['students' => $students]);
 
 
     }
