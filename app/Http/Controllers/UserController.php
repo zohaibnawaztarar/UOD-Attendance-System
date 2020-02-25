@@ -6,6 +6,7 @@ use App\Role;
 use App\Module;
 use App\Locations;
 use App\Session;
+use App\Enrolment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -160,18 +161,23 @@ class UserController extends Controller
             'startTime' => 'required|max:120',
             'endTime' => 'required|max:120',
             'startDate' => 'required|max:120',
-            'endDate' => 'required|max:120',
-            'day' => 'required|max:120',
+            //'endDate' => 'required|max:120',
+            //'day' => 'required|max:120',
             'module' => 'required|max:120',
+            'teachers' => 'required|max:120',
             'location' => 'required|max:120',
+
+
         ]);
         $startTime = $request['startTime'];
         $endTime = $request['endTime'];
         $startDate = $request['startDate'];
-        $endDate = $request['endDate'];
-        $day = $request['day'];
+        //$endDate = $request['endDate'];
+        //$day = $request['day'];
         $module = $request['module'];
+        $teachers= $request['teachers'];
         $location = $request['location'];
+
 
 
 
@@ -179,10 +185,12 @@ class UserController extends Controller
         $session->startTime = $startTime;
         $session->endTime = $endTime;
         $session->startDate = $startDate;
-        $session->endDate = $endDate;
-        $session->day = $day;
+        //$session->endDate = $endDate;
+        //$session->day = $day;
         $session->module = $module;
+        $session->teachers = $teachers;
         $session->location = $location;
+
 
 
 
@@ -240,5 +248,31 @@ class UserController extends Controller
 
         return redirect()->back()->with("success","Password changed successfully !");
 
+    }
+
+
+    //Function to post students to modules on module enrolment page
+    public function postModuleEnrolment(Request $request)
+    {
+        $this->validate($request, [
+            'module_id' => 'required|max:120',
+            'student_id' => 'required|max:120',
+        ]);
+
+        $module_id = $request['module_id'];
+        $student_id = $request['student_id'];
+
+
+
+        $enrolment = new Enrolment();
+        $enrolment->module_id = $request->module_id;
+        $enrolment->student_id = $request->student_id;
+
+
+
+
+        $enrolment->save();
+
+        return redirect()->back()->with(['message' => 'Successfully Enrolled!']);
     }
 }

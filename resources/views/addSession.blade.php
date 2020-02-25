@@ -21,7 +21,7 @@
                 <option value="">Select Module</option>
                 @isset($modules)
                     @foreach ($modules as $data)
-                     <option name="{{ $data->name }}" value="{{ $data->name }}" date-id="{{ $data->id }}">{{ $data->moduleCode }} - {{ $data->name }}</option>
+                     <option  value="{{ $data->id }}" date-id="{{ $data->id }}">{{ $data->moduleCode }} - {{ $data->name }}</option>
                     @endforeach
                 @endisset
             </select>
@@ -32,12 +32,13 @@
                 <select class="ui search dropdown getid uppercase" name="location">
                     <option value="">Select Location</option>
                     @isset($locations)
-                        @foreach ($locations as $data)
-                            <option value="{{ $data->building }}, {{ $data->room }}" date-id="{{ $data->id }}">{{ $data->building }} - {{ $data->room }} - {{ $data->capacity }} </option>
+                        @foreach ($locations as $location)
+                            <option value="{{ $location->id }}" id="location">{{ $location->building }} - {{ $location->room }} - {{ $location->capacity }} </option>
                         @endforeach
                     @endisset
                 </select>
             </div>
+
 
         </div>
 
@@ -54,21 +55,34 @@
 
         <div class="two fields">
         <div class="field">
-            <label for="">From</label>
+            <label for="">Date</label>
             <input type="text" placeholder="Date" name="startDate" id="startDate" class="airdatepicker" value="{{Request::old('startDate')}}" />
         </div>
-        <div class="field">
+
+            <div class="field">
+                <label>Teaching Staff</label>
+                <select class="ui search dropdown getid uppercase" name="teachers">
+                    <option value="">Select Teaching Staff</option>
+                    @isset($teachers)
+                        @foreach ($teachers as $teacher)
+                            <option   value="{{ $teacher->id }}" id="{{ $teacher->id }}">{{ $teacher->first_name }}  {{ $teacher->last_name }} </option>
+
+                        @endforeach
+                    @endisset
+                </select>
+            </div>
+{{--        <div class="field">
             <label for="">To</label>
             <input type="text" placeholder="Date" name="endDate" id="endDate" class="airdatepicker" value="{{Request::old('endDate')}}" />
         </div>
-        </div>
+        </div>--}}
 
         {{--<div class="eight wide field">
             <label for="">Total hours</label>
             <input type="number" placeholder="0" name="hours" />
         </div>--}}
 
-        <div class="grouped fields field">
+        {{--<div class="grouped fields field">
             <label>Choose day(s)</label>
             <div class="field">
                 <div class="ui checkbox sunday">
@@ -119,8 +133,8 @@
                     <li class=""></li>
                 </ul>
             </div>
-        </div>
-        </div>
+        </div>--}}
+    </div>
 
         <div class="actions">
             <input type="hidden" name="id" value="">
@@ -146,11 +160,6 @@
         $('.jtimepicker').mdtimepicker({ format: 'hh:mm:ss', hourPadding: true });
         $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'yyyy-mm-dd' });
 
-        $('.ui.dropdown.getid').dropdown({ onChange: function(value, text, $selectedItem) {
-                $('select[name="module"] option').each(function() {
-                    if($(this).val()==value) {var id = $(this).attr('data-id');$('input[name="id"]').val(id);};
-                });
-            }});
 
     </script>
 
