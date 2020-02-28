@@ -15,11 +15,22 @@
     <form id="add_schedule_form" action="{{route('moduleEnrolment.moduleEnrolment')}}" class="ui form" method="post" accept-charset="utf-8">
         {{ csrf_field() }}
 
-        <div class="two fields">
 
 
+            <div class="field">
+                <label>Module</label>
+                <select class="ui search dropdown getid uppercase" name="module_id">
+                    <option value="">Select Module</option>
+                    @isset($modules)
+                        @foreach ($modules as $module)
+                            <option   value="{{ $module->id }}" id="{{ $module->id }}">{{$module->moduleCode}} - {{$module->name}} </option>
 
-            <div class="grouped fields field">
+                        @endforeach
+                    @endisset
+                </select>
+            </div>
+
+           {{-- <div class="grouped fields field">
             <label>Select Module</label>
 
 
@@ -33,7 +44,7 @@
                     </div>
                         @endforeach
                     @endisset
-            </div>
+            </div>--}}
 
             <div class="grouped fields field">
 
@@ -44,7 +55,7 @@
                     @foreach ($students as $data)
                         <div class="field">
                             <div class="ui checkbox">
-                        <input type="checkbox" name="student_id" value="{{$data->id}}" id="student_id">
+                        <input type="checkbox" name="student_id[]" value="{{$data->id}}" id="student_id">
                         <label>{{$data->first_name}}  {{$data->last_name}}</label>
                             </div>
                         </div>
@@ -54,7 +65,7 @@
             </div>
 
 
-        </div>
+
 
 
             <button class="ui positive small button" type="submit" name="submit"><i class="ui checkmark icon"></i> Enrol</button>
