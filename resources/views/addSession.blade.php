@@ -134,6 +134,7 @@
                 </ul>
             </div>
         </div>--}}
+            <input type="hidden" name="pin"  id="pin" value="{{rand(0,999)}}">
     </div>
 
         <div class="actions">

@@ -166,6 +166,7 @@ class UserController extends Controller
             'module' => 'required|max:120',
             'teachers' => 'required|max:120',
             'location' => 'required|max:120',
+            'pin' => 'required|max:120',
 
 
         ]);
@@ -177,7 +178,7 @@ class UserController extends Controller
         $module = $request['module'];
         $teachers= $request['teachers'];
         $location = $request['location'];
-
+        $pin = $request['pin'];
 
 
 
@@ -190,6 +191,7 @@ class UserController extends Controller
         $session->module = $module;
         $session->teachers = $teachers;
         $session->location = $location;
+        $session->pin = $pin;
 
 
 
@@ -258,20 +260,24 @@ class UserController extends Controller
             'module_id' => 'required|max:120',
             'student_id' => 'required|max:120',
         ]);
+        /*
+                $module_id = $request['module_id'];
+                $student_id = $request['student_id'];
 
-        $module_id = $request['module_id'];
-        $student_id = $request['student_id'];
+                $enrolment = new Enrolment();
+                $enrolment->module_id = $request->module_id;
+                $enrolment->student_id = $request->student_id;*/
 
+        ////////////////////////////
+        foreach($request->student_id as $student_id){
+            $check = new Enrolment();
+            $check->module_id = $request->module_id;
+            $check->student_id = $student_id;
+            $check->save();
+    }
+        ///////////////////////////
 
-
-        $enrolment = new Enrolment();
-        $enrolment->module_id = $request->module_id;
-        $enrolment->student_id = $request->student_id;
-
-
-
-
-        $enrolment->save();
+        //$enrolment->save();
 
         return redirect()->back()->with(['message' => 'Successfully Enrolled!']);
     }
