@@ -269,7 +269,7 @@ Route::group(['middleware'=> ['web']], function (){
     ]);
 
     // Route to start session
-    Route::get('/lecturers/{lec_id}', [
+    Route::get('/lecturers/QR/{lec_id}', [
         'uses' => 'SessionController@getStartSession',
         'as' => 'lecturers.start',
         'middleware' => 'roles',
