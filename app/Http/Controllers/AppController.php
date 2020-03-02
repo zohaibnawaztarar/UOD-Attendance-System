@@ -4,7 +4,7 @@ use App\User;
 use App\Role;
 use App\Module;
 use App\Locations;
-use App\Session;
+use App\TimeTable;
 use App\Enrolment;
 use Illuminate\Http\Request;
 class AppController extends Controller
@@ -138,7 +138,7 @@ class AppController extends Controller
 
     public function getAddSessions()
     {
-        $sessions = session::all();
+        $sessions = TimeTable::all();
         return view('addSession', ['sessions' => $sessions]);
         $modules = module::all();
         $module = module::where('id', $module_id)->first();

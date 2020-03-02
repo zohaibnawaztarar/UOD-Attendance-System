@@ -17,11 +17,11 @@
         <div class="two fields">
         <div class="field">
             <label>Module</label>
-            <select class="ui search dropdown getid uppercase" name="module">
+            <select class="ui search dropdown getid uppercase" name="module_id">
                 <option value="">Select Module</option>
                 @isset($modules)
-                    @foreach ($modules as $data)
-                     <option  value="{{ $data->id }}" date-id="{{ $data->id }}">{{ $data->moduleCode }} - {{ $data->name }}</option>
+                    @foreach ($modules as $module)
+                     <option  value="{{ $module->id }}" id="{{ $module->id }}">{{ $module->moduleCode }} - {{ $module->name }}</option>
                     @endforeach
                 @endisset
             </select>
@@ -29,7 +29,7 @@
 
             <div class="field">
                 <label>Location</label>
-                <select class="ui search dropdown getid uppercase" name="location">
+                <select class="ui search dropdown getid uppercase" name="location_id">
                     <option value="">Select Location</option>
                     @isset($locations)
                         @foreach ($locations as $location)
@@ -61,7 +61,7 @@
 
             <div class="field">
                 <label>Teaching Staff</label>
-                <select class="ui search dropdown getid uppercase" name="teachers">
+                <select class="ui search dropdown getid uppercase" name="teacher_id">
                     <option value="">Select Teaching Staff</option>
                     @isset($teachers)
                         @foreach ($teachers as $teacher)

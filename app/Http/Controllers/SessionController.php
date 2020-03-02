@@ -1,16 +1,27 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Role;
-use APP\Module;
+use App\TimeTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use mysql_xdevapi\Session;
 
 class SessionController extends Controller
 {
+    public function getViewSession()
+    {
+        $lec = TimeTable::all();
+        return view('deleteSession', ['lec' => $lec]);
+    }
 
-    public function postModule(Request $request)
+    public function getDeleteSession ($lec_id)
+    {
+        $lec = TimeTable::where('id', $lec_id)->first();
+        $lec->delete();
+        return redirect()->back()->with(['message' => 'Successfully deleted!']);
+    }
+
+    /*public function postModule(Request $request)
     {
         $this->validate($request, [
            'moduleCode' => 'required|max:120',
@@ -31,7 +42,10 @@ class SessionController extends Controller
         //Auth::login($user);
 
         return redirect()->back()->with->with(['message' => 'Successfully added!']);
-    }
+    }*/
+
+
+
 
 
 }

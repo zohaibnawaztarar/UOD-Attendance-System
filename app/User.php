@@ -36,4 +36,14 @@ class User extends Model implements Authenticatable
         }
         return false;
     }
+
+    public function enrolment()
+    {
+        return $this->hasMany('App\Enrolment');
+    }
+
+    public function timetable()
+    {
+        return $this->hasMany('App\TimeTable');
+    }
 }
