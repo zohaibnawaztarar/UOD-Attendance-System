@@ -243,4 +243,37 @@ Route::group(['middleware'=> ['web']], function (){
     // Route for change password
     Route::post('/changePassword','UserController@changePassword')->name('changePassword');
 
+    // Route to view / delete Session
+    Route::get('/deleteSession', [
+        'uses' => 'SessionController@getViewSession',
+        'as' => 'deleteSession',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
+    // Route to delete Session
+    Route::get('/deleteSession/{lec_id}', [
+        'uses' => 'SessionController@getDeleteSession',
+        'as' => 'deleteSession.delete',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
+
+    // Route to view / Disenrol students
+    Route::get('/disenrollStudents', [
+        'uses' => 'EnrolmentController@getViewEnroll',
+        'as' => 'disenrollStudents',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
+    // Route to delete Students
+    Route::get('/disenrollStudents/{enrolled_id}', [
+        'uses' => 'EnrolmentController@getDeleteEnrolled',
+        'as' => 'disenrollStudents.delete',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
 });

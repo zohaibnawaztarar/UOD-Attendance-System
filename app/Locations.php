@@ -10,4 +10,9 @@ class Locations extends Model
     {
         return $this->belongsToMany('App\User', 'user_role', 'role_id', 'user_id');
     }
+
+    public function timetable()
+    {
+        return $this->hasMany('App\TimeTable');
+    }
 }

@@ -6,8 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Module extends Model
 {
-    public function module()
+    public function enrolment()
     {
-        return $this->belongsToMany('App\User', 'user_role', 'role_id', 'user_id');
+        return $this->hasMany('App\Enrolment');
+    }
+
+
+    public function timetable()
+    {
+        return $this->hasMany('App\TimeTable');
     }
 }

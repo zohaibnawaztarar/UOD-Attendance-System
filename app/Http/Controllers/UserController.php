@@ -5,7 +5,7 @@ use App\User;
 use App\Role;
 use App\Module;
 use App\Locations;
-use App\Session;
+use App\TimeTable;
 use App\Enrolment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -163,9 +163,9 @@ class UserController extends Controller
             'startDate' => 'required|max:120',
             //'endDate' => 'required|max:120',
             //'day' => 'required|max:120',
-            'module' => 'required|max:120',
-            'teachers' => 'required|max:120',
-            'location' => 'required|max:120',
+            'module_id' => 'required|max:120',
+            'teacher_id' => 'required|max:120',
+            'location_id' => 'required|max:120',
             'pin' => 'required|max:120',
 
 
@@ -175,22 +175,22 @@ class UserController extends Controller
         $startDate = $request['startDate'];
         //$endDate = $request['endDate'];
         //$day = $request['day'];
-        $module = $request['module'];
-        $teachers= $request['teachers'];
-        $location = $request['location'];
+        $module_id = $request['module_id'];
+        $teacher_id = $request['teacher_id'];
+        $location_id = $request['location_id'];
         $pin = $request['pin'];
 
 
 
-        $session = new Session();
+        $session = new TimeTable();
         $session->startTime = $startTime;
         $session->endTime = $endTime;
         $session->startDate = $startDate;
         //$session->endDate = $endDate;
         //$session->day = $day;
-        $session->module = $module;
-        $session->teachers = $teachers;
-        $session->location = $location;
+        $session->module_id = $module_id;
+        $session->teacher_id = $teacher_id;
+        $session->location_id = $location_id;
         $session->pin = $pin;
 
 

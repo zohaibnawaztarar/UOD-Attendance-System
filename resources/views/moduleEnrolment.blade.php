@@ -23,7 +23,7 @@
                     <option value="">Select Module</option>
                     @isset($modules)
                         @foreach ($modules as $module)
-                            <option   value="{{ $module->id }}" id="{{ $module->id }}">{{$module->moduleCode}} - {{$module->name}} </option>
+                            <option   value="{{ $module->id }}" id="module_id">{{$module->moduleCode}} - {{$module->name}} </option>
 
                         @endforeach
                     @endisset
