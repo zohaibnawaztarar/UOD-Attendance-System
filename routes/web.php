@@ -251,10 +251,35 @@ Route::group(['middleware'=> ['web']], function (){
         'roles' => ['Lecturer']
     ]);
 
+
     // Route to delete Session
     Route::get('/deleteSession/{lec_id}', [
         'uses' => 'SessionController@getDeleteSession',
         'as' => 'deleteSession.delete',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
+    // view for start page
+    Route::get('/lecturers', [
+        'uses' => 'SessionController@getViewLec',
+        'as' => 'lecturers',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
+    // Route to start session
+    Route::get('/lecturers/{lec_id}', [
+        'uses' => 'SessionController@getStartSession',
+        'as' => 'lecturers.start',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
+    // view for start page
+    Route::get('/QRlecturers', [
+        'uses' => 'SessionController@getViewQR',
+        'as' => 'QRlecturers',
         'middleware' => 'roles',
         'roles' => ['Lecturer']
     ]);
