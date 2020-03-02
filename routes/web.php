@@ -261,7 +261,7 @@ Route::group(['middleware'=> ['web']], function (){
     ]);
 
     // view for start page
-    Route::get('/lecturers', [
+    Route::get('/lecturers/{teach_id}', [
         'uses' => 'SessionController@getViewLec',
         'as' => 'lecturers',
         'middleware' => 'roles',

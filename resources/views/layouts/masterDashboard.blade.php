@@ -134,8 +134,9 @@
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
                     <div class="collapse" id="collapseLecturers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('lecturers') }}">Start Sessions</a>
-                            <a class="nav-link" href="{{ route('addSession') }}">Add Sessions</a>
+                            <a class="nav-link" href="{{ route('lecturers', ['teach_id' => Auth::user()->id]) }}">Start Sessions</a>
+                            {{--{{ route('deleteSession.delete', ['lec_id' => $lec->id]) }}
+                          --}}  <a class="nav-link" href="{{ route('addSession') }}">Add Sessions</a>
                             <a class="nav-link" href="{{ route('deleteSession') }}">Delete Sessions</a>
                             <a class="nav-link" href="{{ route('moduleEnrolment') }}">Enrol Students</a>
                             <a class="nav-link" href="{{ route('disenrollStudents') }}">Disenroll Students</a>

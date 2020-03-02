@@ -21,9 +21,10 @@ class SessionController extends Controller
         return redirect()->back()->with(['message' => 'Successfully deleted!']);
     }
 
-    public function getViewLec()
+    public function getViewLec($teach_id)
     {
-        $lec = TimeTable::all();
+        $lec = TimeTable::where('teacher_id', $teach_id)->get();
+        //all();
         return view('lecturers', ['lec' => $lec]);
     }
 
