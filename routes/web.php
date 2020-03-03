@@ -301,4 +301,10 @@ Route::group(['middleware'=> ['web']], function (){
         'roles' => ['Lecturer']
     ]);
 
+    // route for attendance signin
+    Route::post('/students/attendanceSignIn', [
+        'uses' => 'AttendanceController@postAttendance',
+        'as' => 'students.attendanceSignIn'
+    ]);
+
 });
