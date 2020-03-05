@@ -25,4 +25,9 @@ class TimeTable extends Model
     {
         return $this->belongsTo('App\Locations');
     }
+
+    public function attendance()
+    {
+        return $this->hasMany('App\Attendance');
+    }
 }

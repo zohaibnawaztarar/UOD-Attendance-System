@@ -1,58 +1,43 @@
 @extends('layouts.masterDashboard')
 
 @section('title')
-    Welcome
+    Teaching Sessions
 @endsection
-@section('subNav')
-    {{-- this section will not be shown --}}
-@stop
-
 
 @section('content')
-
     @include('includes.message-block')
-    <h1>This is dashboard page for School Staff only</h1>
-    <table>
-        <thead>
+    <div class="container-fluid">
+        <div class="row"></div>
+        <h1 class="text-center">Current Teaching Sessions</h1>
 
-        <th>Module Code</th>
-        <th>Module Name</th>
-
-        <th>Location</th>
-
-        <th>Lecturer Name</th>
-
-        <th>Date</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-
-
-
-
-        <th></th>
-        </thead>
-        <tbody>
-        @foreach($lec as $lec)
-
+        <table id="example" class="display" style="width:100%">
+            <thead>
             <tr>
-                <form action="{{ route('deleteSession.delete', ['lec_id' => $lec->id]) }}" method="get">
-                    <td>{{ $lec->module->moduleCode }}</td>
-                    <td>{{ $lec->module->name }}</td>
-                    <td>{{ $lec->location->room}}, {{ $lec->location->building}}</td>
-                    <td>{{ $lec->teacher->first_name}} {{ $lec->teacher->last_name}}</td>
-                    <td>{{ $lec->startDate }}</td>
-                    <td>{{ $lec->startTime }}</td>
-                    <td>{{ $lec->endTime }}</td>
-
-                    {{--<td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>--}}
-
-                    {{--{{ csrf_field() }}--}}
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><button type="submit">Delete Session</button></td>
-                </form>
+                <th>Module Code</th>
+                <th>Module Name</th>
+                <th>Location</th>
+                <th>Lecturer Name</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Action</th>
             </tr>
-        </tbody>
-        @endforeach
-
-    </table>
+            </thead>
+            <tbody>
+            @foreach($lec as $lec)
+                <tr>
+                    <form action="{{ route('deleteSession.delete', ['lec_id' => $lec->id]) }}" method="get">
+                        <td>{{ $lec->module->moduleCode }}</td>
+                        <td>{{ $lec->module->name }}</td>
+                        <td>{{ $lec->location->room}}, {{ $lec->location->building}}</td>
+                        <td>{{ $lec->teacher->first_name}} {{ $lec->teacher->last_name}}</td>
+                        <td>{{ $lec->startDate }}</td>
+                        <td>{{ $lec->startTime }}</td>
+                        <td>{{ $lec->endTime }}</td>
+                        <td><button type="submit">Delete Session</button></td>
+                    </form>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
 @endsection

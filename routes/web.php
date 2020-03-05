@@ -307,4 +307,16 @@ Route::group(['middleware'=> ['web']], function (){
         'as' => 'students.attendanceSignIn'
     ]);
 
+    // Route to view student Attendance Reports
+    Route::get('/attendanceReports', [
+        'uses' => 'AttendanceController@getViewReports',
+        'as' => 'attendanceReports',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
 });
+
+/*Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');*/

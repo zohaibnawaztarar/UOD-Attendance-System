@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model implements Authenticatable
 {
     use \Illuminate\Auth\Authenticatable;
+    use Notifiable;
     public function roles()
     {
         return $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');
@@ -45,5 +48,10 @@ class User extends Model implements Authenticatable
     public function timetable()
     {
         return $this->hasMany('App\TimeTable');
+    }
+
+    public function attendance()
+    {
+        return $this->hasMany('App\Attendance');
     }
 }
