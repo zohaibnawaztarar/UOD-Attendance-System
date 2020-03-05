@@ -6,24 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title')</title>
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link href="{{ URL::to('/css/jquery.dataTables.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-    <!-- Styles -->
-
-    {{--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('vendor/bootstrap/css/bootstrap.min.css') }}"> --}}
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ URL::to('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/dashboardStyles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/util.css') }}">
-
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/main.css') }}">
 
     <link href="{{ asset('/vendor/mdtimepicker/mdtimepicker.min.css') }}" rel="stylesheet">
@@ -31,21 +24,10 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('/vendor/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/vendor/semantic-ui/semantic.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/vendor/DataTables/datatables.min.css') }}">
 
+    <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script>
 
-
-
-
-    {{--<style>
-        .ui.active.modal {position: relative !important;}
-        .datepicker {z-index: 999 !important;}
-        .datepickers-container {z-index: 9999 !important;}
-    </style>--}}
-
-
-
-    <!--===============================================================================================-->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -79,7 +61,7 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-              {{--<div class="sb-sidenav-menu-heading">-</div>--}}
+                    {{--<div class="sb-sidenav-menu-heading">-</div>--}}
                     <br>
                     <a class="nav-link" href="{{ route('dashboard') }}"
                     ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -139,6 +121,7 @@
                             <a class="nav-link" href="{{ route('deleteSession') }}">Delete Sessions</a>
                             <a class="nav-link" href="{{ route('moduleEnrolment') }}">Enrol Students</a>
                             <a class="nav-link" href="{{ route('disenrollStudents') }}">Disenroll Students</a>
+                            <a class="nav-link" href="{{ route('attendanceReports') }}">Attendance Reports</a>
                         </nav>
                     </div>
 
@@ -152,6 +135,23 @@
                             <a class="nav-link" href="{{ route('students') }}">Students</a>
 
                     </div>
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseLayouts"
+                    ><div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
+                        Settings
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
+                    <div class="collapse" id="collapseSettings" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{ route('changePassword') }}">Change Password</a>
+
+                    </div>
+
+                    <a class="nav-link" href="{{ route('logout') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-power-off"></i></div>
+                        Logout
+                    </a>
+
+
 
 
 
@@ -185,9 +185,7 @@
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Logged in as: {{ Auth::user()->first_name}}</div>
-
-
+                <div class="small">Logged in as: {{ Auth::user()->first_name}} {{ Auth::user()->last_name}}</div>
             </div>
         </nav>
     </div>
@@ -195,32 +193,32 @@
 
     <div id="layoutSidenav_content">
         <main>
-    <div class="container-fluid">
-        @yield('content')
-    </div>
-    </main>
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+        </main>
 
         @include('includes.dashboardFooter')
 
+    </div>
 </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-<script src="{{ asset('/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="{{asset ('js/scripts.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-{{--    <script src="assets/demo/chart-area-demo.js"></script>--}}
-{{--    <script src="assets/demo/chart-bar-demo.js"></script>--}}
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-{{--    <script src="assets/demo/datatables-demo.js"></script>--}}
-
-<script src="{{ asset('/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
-
 <script src="{{ asset('/vendor/semantic-ui/semantic.min.js') }}"></script>
-<script src="{{ asset('/vendor/DataTables/datatables.min.js') }}"></script>
+<script src="{{ asset('/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/vendor/semantic-ui/semantic.min.js') }}"></script>
+<script src="{{ asset('/js/bootstrap-notify.js') }}"></script>
 
+<script type="text/javascript">
 
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "order": [[ 0, "asc" ]]
+        } );
+    } );
+</script>
 </body>
 
 </html>

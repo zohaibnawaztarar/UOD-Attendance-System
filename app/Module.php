@@ -16,4 +16,12 @@ class Module extends Model
     {
         return $this->hasMany('App\TimeTable');
     }
+
+    public function attendance()
+    {
+        return $this->hasMany('App\Attendance');
+    }
+
+
+
 }

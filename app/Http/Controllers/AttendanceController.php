@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 use App\TimeTable;
 use App\Attendance;
+use App\User;
+use App\Role;
+use App\Module;
+use App\Locations;
+use App\Enrolment;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -19,11 +24,16 @@ class AttendanceController extends Controller
 
 
         $pin = $request['pin'];
-        $session_id = TimeTable::where('pin', $pin)->value('id');
+        //$session_id = TimeTable::where('pin', $pin)->value('id');
         //$session_id = $request['session_id'];
         $attendee_id = $request['attendee_id'];
         $status = $request['status'];
+try{
+    $session_id = TimeTable::where('pin', $pin)->value('id');
+}
+catch (\ErrorException $error){
 
+}
 
 
         $attendance = new Attendance();
@@ -35,5 +45,11 @@ class AttendanceController extends Controller
 
 
         return redirect()->back()->with(['message' => 'Successfully Signed!']);
+    }
+
+    public function getViewReports()
+    {
+        $attendances = Attendance::all();
+        return view('attendanceReports', ['attendances' => $attendances]);
     }
 }

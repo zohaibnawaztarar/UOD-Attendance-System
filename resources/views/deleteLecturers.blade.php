@@ -1,42 +1,35 @@
 @extends('layouts.masterDashboard')
 
 @section('title')
-    Welcome
+    Teaching Staff
 @endsection
-@section('subNav')
-    {{-- this section will not be shown --}}
-@stop
-
 
 @section('content')
     @include('includes.message-block')
-    <h1>This is dashboard page for School Staff only</h1>
-    <table>
-        <thead>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>E-Mail</th>
+    <div class="container-fluid">
+        <div class="row"></div>
+        <h1 class="text-center">Current Teaching Staff</h1>
 
-        <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-        <th></th>
-        </thead>
-        <tbody>
-        @foreach($users as $user)
-
+        <table id="example" class="display" style="width:100%">
+            <thead>
             <tr>
-                <form action="{{ route('schoolAdmin.delete', ['user_id' => $user->id]) }}" method="get">
-                    <td>{{ $user->first_name }}</td>
-                    <td>{{ $user->last_name }}</td>
-                    <td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>
-
-                    {{--{{ csrf_field() }}--}}
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><button type="submit">Delete User</button></td>
-                </form>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>E-Mail</th>
+                <th>Action</th>
             </tr>
-        </tbody>
-
-        @endforeach
-
-    </table>
+            </thead>
+            <tbody>
+            @foreach($users as $user)
+                <tr>
+                    <form action="{{ route('schoolAdmin.delete', ['user_id' => $user->id]) }}" method="get">
+                        <td>{{ $user->first_name }}</td>
+                        <td>{{ $user->last_name }}</td>
+                        <td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>
+                        <td><button type="submit">Remove Staff Member </button></td>
+                    </form>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
 @endsection

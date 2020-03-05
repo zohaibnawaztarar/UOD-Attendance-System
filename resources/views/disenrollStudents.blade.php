@@ -1,48 +1,39 @@
 @extends('layouts.masterDashboard')
 
 @section('title')
-    Welcome
+    Disenroll Students
 @endsection
-@section('subNav')
-    {{-- this section will not be shown --}}
-@stop
-
 
 @section('content')
-
     @include('includes.message-block')
-    <h1>This is dashboard page for School Staff only</h1>
-    <table>
-        <thead>
+    <div class="container-fluid">
+        <div class="row"></div>
+        <h1 class="text-center">Current Enrolled Students</h1>
 
-
-        <th>Module</th>
-
-        <th>Student Name</th>
-
-
-
-        <th></th>
-
-        </thead>
-        <tbody>
-
-        @foreach($enrolled as $enrolled)
-
+        <table id="example" class="display" style="width:100%">
+            <thead>
             <tr>
-                <form action="{{ route('disenrollStudents.delete', ['enrolled_id' => $enrolled->id]) }}" method="get">
-
-                    <td>{{ $enrolled->module->name }}</td>
-                    <td>{{ $enrolled->student->first_name }}</td>
-                    {{--<td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>--}}
-
-                    {{--{{ csrf_field() }}--}}
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><button type="submit">Disenroll</button></td>
-                </form>
+                <th>Module Code</th>
+                <th>Module Name</th>
+                <th>Student First Name</th>
+                <th>Student Last Name Name</th>
+                <th>Student Email</th>
+                <th>Action</th>
             </tr>
-        </tbody>
-        @endforeach
-
-    </table>
+            </thead>
+            <tbody>
+            @foreach($enrolled as $enrolled)
+                <tr>
+                    <form action="{{ route('disenrollStudents.delete', ['enrolled_id' => $enrolled->id]) }}" method="get">
+                        <td>{{ $enrolled->module->moduleCode }}</td>
+                        <td>{{ $enrolled->module->name }}</td>
+                        <td>{{ $enrolled->student->first_name }}</td>
+                        <td>{{ $enrolled->student->last_name }}</td>
+                        <td>{{ $enrolled->student->email }}</td>
+                        <td><button type="submit">Disenroll Student</button></td>
+                    </form>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
 @endsection
