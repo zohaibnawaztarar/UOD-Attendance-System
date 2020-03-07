@@ -30,7 +30,7 @@
                         <td>{{ $enrolled->student->first_name }}</td>
                         <td>{{ $enrolled->student->last_name }}</td>
                         <td>{{ $enrolled->student->email }}</td>
-                        <td><button type="submit">Disenroll Student</button></td>
+                        <td><button class="btn btn-danger" type="submit">Disenroll Student</button></td>
                     </form>
                 </tr>
             @endforeach

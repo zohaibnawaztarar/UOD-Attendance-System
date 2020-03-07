@@ -10,67 +10,52 @@
 
 @section('content')
     @include('includes.message-block')
-    <h1 class="text-center">Change your Password</h1>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Change password</div>
+    <div class="container-fluid">
+        <div class="row"></div>
+        <h1 class="text-center"> Change your Password </h1>
+        <div class="container-login100">
+            <div class="wrap-login100 p-t-0 p-b-30">
 
-                    <div class="panel-body">
-                        @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
+
+
+
+
+
                         <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
                             {{ csrf_field() }}
+                            {{ $errors->has('current-password') ? ' has-error' : '' }}
+                            <div class="form-group">
+                                <label for="new-password" class="">Current Password</label>
 
-                            <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
-                                <label for="new-password" class="col-md-4 control-label">Current Password</label>
-
-                                <div class="col-md-6">
+                                <div class="">
                                     <input id="current-password" type="password" class="form-control" name="current-password" required>
 
-                                    @if ($errors->has('current-password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('current-password') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
 
-                            <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
-                                <label for="new-password" class="col-md-4 control-label">New Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="new-password" type="password" class="form-control" name="new-password" required>
-
-                                    @if ($errors->has('new-password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('new-password') }}</strong>
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="new-password-confirm" class="col-md-4 control-label">Confirm New Password</label>
+                                <label for="new-password" class="">New Password</label>
 
-                                <div class="col-md-6">
+                                <div class="">
+                                    <input id="new-password" type="password" class="form-control" name="new-password" required>
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="new-password-confirm" class="">Confirm New Password</label>
+
+                                <div class="">
                                     <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                <div class="container-login100-form-btn m-t-32">
+                                    <button type="submit" class="login100-form-btn">
                                         Change Password
                                     </button>
                                 </div>

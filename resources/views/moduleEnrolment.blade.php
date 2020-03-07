@@ -57,7 +57,10 @@
             </div>
             </tbody>
             </table>
-            <button class="ui positive small button" type="submit" name="submit"><i class="ui checkmark icon"></i> Enrol</button>
+<div class="container-login100-form-btn m-t-32">
+            <button class="login100-form-btn" type="submit" name="submit"> Enrol Student(s)</button>
+    </div>
         </form>
+
     </div>
 @endsection

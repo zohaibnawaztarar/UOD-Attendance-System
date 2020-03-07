@@ -34,7 +34,7 @@
                         <td>{{ $lec->startDate }}</td>
                         <td>{{ $lec->startTime }}</td>
                         <td>{{ $lec->endTime }}</td>
-                        <td><button type="submit">Delete Session</button></td>
+                        <td><button class="btn btn-danger" type="submit">Delete Session</button></td>
                     </form>
                 </tr>
             @endforeach

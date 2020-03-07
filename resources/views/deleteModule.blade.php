@@ -25,7 +25,7 @@
                         <td>{{ $module->moduleCode }}</td>
                         <td>{{ $module->name }}</td>
 
-                        <td><button type="submit">Delete Module</button></td>
+                        <td><button class="btn btn-danger" type="submit">Delete Module</button></td>
                     </form>
                 </tr>
             @endforeach

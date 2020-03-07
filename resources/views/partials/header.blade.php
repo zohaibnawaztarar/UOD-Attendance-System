@@ -1,5 +1,5 @@
-<header>
-    <nav>
+{{--<header>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #0d71bb;">
         <ul>
             <li><a href="{{ route('lecturers') }}">Lecturer</a></li>
             <li><a href="{{ route('students') }}">Students</a></li>
@@ -14,4 +14,4 @@
             @endif
         </ul>
     </nav>
-</header>
+</header>--}}
