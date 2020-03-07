@@ -26,7 +26,7 @@
             <tbody>
             @foreach($attendances as $attendances)
                 <tr>
-                    <form action="{{ route('deleteLocation.delete', ['$attendances_id' => $attendances->id]) }}" method="get">
+                    {{--<form action="{{ route('deleteLocation.delete', ['$attendances_id' => $attendances->id]) }}" method="get">--}}
                         <td>{{ $attendances->student->first_name}}</td>
                         <td>{{ $attendances->student->last_name}}</td>
                         <td>{{ $attendances->time->module->moduleCode}}</td>
@@ -38,8 +38,9 @@
                             @else
                                 <div style="color: red">Absent</div>
                             @endif </td>
-                        <td><button type="submit">Contact Student</button></td>
-                    </form>
+                        <td><a href="mailto:{{$attendances->student->email}}?subject=Your Attendance" class="btn btn-primary" id="btnOutlook" style="background: #4365e2;" role="button" aria-pressed="true">Contact Student</a></td>
+
+                    {{--</form>--}}
                 </tr>
             @endforeach
             </tbody>

@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" type="image/png" href="{{asset('/images/favicon-96x96.png')}}" sizes="96x96">
     <title>@yield('title')</title>
 
     <!-- Fonts -->
@@ -46,10 +46,6 @@
 <div id="page-container">
     <div id="content-wrap">
 @include('includes.header')
-{{--@section('subNav')
-    @include('partials.header')
-@show--}}
-
 
 <div class="container">
     @yield('content')

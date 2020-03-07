@@ -26,7 +26,7 @@
                         <td>{{ $user->first_name }}</td>
                         <td>{{ $user->last_name }}</td>
                         <td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>
-                        <td><button type="submit">Remove Staff Member </button></td>
+                        <td><button class="btn btn-danger" type="submit">Remove Staff Member </button></td>
                     </form>
                 </tr>
             @endforeach

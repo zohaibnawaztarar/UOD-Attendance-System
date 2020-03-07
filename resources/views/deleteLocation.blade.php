@@ -26,7 +26,7 @@
                         <td>{{ $location->building }}</td>
                         <td>{{ $location->room }}</td>
                         <td>{{ $location->capacity }}</td>
-                        <td><button type="submit">Delete Location</button></td>
+                        <td><button class="btn btn-danger" type="submit">Delete Location</button></td>
                     </form>
                 </tr>
             @endforeach

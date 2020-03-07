@@ -302,7 +302,7 @@ Route::group(['middleware'=> ['web']], function (){
     ]);
 
     // route for attendance signin
-    Route::post('/students/attendanceSignIn', [
+    Route::get('/students/attendanceSignIn', [
         'uses' => 'AttendanceController@postAttendance',
         'as' => 'students.attendanceSignIn'
     ]);
@@ -313,6 +313,20 @@ Route::group(['middleware'=> ['web']], function (){
         'as' => 'attendanceReports',
         'middleware' => 'roles',
         'roles' => ['Lecturer']
+    ]);
+
+    // Route to get settings/ip restrictions page
+    Route::get('/settings', [
+        'uses' => 'SettingsController@getViewSettings',
+        'as' => 'settings',
+        'middleware' => 'roles',
+        'roles' => ['System Admin']
+    ]);
+
+    // route to post IP
+    Route::post('/settings/addIP', [
+        'uses' => 'SettingsController@postIp',
+        'as' => 'settings.addIP'
     ]);
 
 });

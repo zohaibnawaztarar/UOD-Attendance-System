@@ -9,8 +9,12 @@
 
 @section('content')
     @include('includes.message-block')
-    <div class="limiter">
-    <h1>Add New Teaching Session</h1>
+    <div class="container-fluid">
+        <div class="row"></div>
+        <h1 class="text-center"> Add New Teaching Session </h1>
+
+
+
 
     <form id="add_schedule_form" action="{{route('addSession.addSession')}}" class="ui form" method="post" accept-charset="utf-8">
         {{ csrf_field() }}
@@ -71,75 +75,13 @@
                     @endisset
                 </select>
             </div>
-{{--        <div class="field">
-            <label for="">To</label>
-            <input type="text" placeholder="Date" name="endDate" id="endDate" class="airdatepicker" value="{{Request::old('endDate')}}" />
-        </div>
-        </div>--}}
 
-        {{--<div class="eight wide field">
-            <label for="">Total hours</label>
-            <input type="number" placeholder="0" name="hours" />
-        </div>--}}
-
-        {{--<div class="grouped fields field">
-            <label>Choose day(s)</label>
-            <div class="field">
-                <div class="ui checkbox sunday">
-                    <input type="checkbox" name="day" value="Sunday" id="day">
-                    <label style="color: red">Sunday</label>
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui checkbox ">
-                    <input type="checkbox" name="day" value="Monday" id="day">
-                    <label>Monday</label>
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui checkbox ">
-                    <input type="checkbox" name="day" value="Tuesday" id="day">
-                    <label>Tuesday</label>
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui checkbox ">
-                    <input type="checkbox" name="day" value="Wednesday" id="day">
-                    <label>Wednesday</label>
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui checkbox ">
-                    <input type="checkbox" name="day" value="Thursday" id="day">
-                    <label>Thursday</label>
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui checkbox ">
-                    <input type="checkbox" name="day" value="Friday" id="day">
-                    <label>Friday</label>
-                </div>
-            </div>
-            <div class="field" style="padding:0">
-                <div class="ui checkbox saturday">
-                    <input type="checkbox" name="day" value="Saturday" id="day">
-                    <label style="color:red;">Saturday</label>
-                </div>
-            </div>
-            <div class="ui error message">
-                <i class="close icon"></i>
-                <div class="header"></div>
-                <ul class="list">
-                    <li class=""></li>
-                </ul>
-            </div>
-        </div>--}}
             <input type="hidden" name="pin"  id="pin" value="{{rand(0,999)}}">
     </div>
 
-        <div class="actions">
+        <div class="actions container-login100-form-btn m-t-32">
             <input type="hidden" name="id" value="">
-            <button class="ui positive small button" type="submit" name="submit"><i class="ui checkmark icon"></i> Save</button>
+            <button class="login100-form-btn align-right" type="submit" name="submit"> Add Teaching Session</button>
             <input type="hidden" name="_token" value="{{Session::token()}}">
         <br><br>
 

@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Setting;
 use App\TimeTable;
 use App\Attendance;
+use App\Classes\table;
 use App\User;
 use App\Role;
 use App\Module;
 use App\Locations;
 use App\Enrolment;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AttendanceController extends Controller
 {
@@ -24,18 +27,38 @@ class AttendanceController extends Controller
 
 
         $pin = $request['pin'];
-        //$session_id = TimeTable::where('pin', $pin)->value('id');
+        $session_id = TimeTable::where('pin', $pin)->value('id');
         //$session_id = $request['session_id'];
         $attendee_id = $request['attendee_id'];
         $status = $request['status'];
-try{
-    $session_id = TimeTable::where('pin', $pin)->value('id');
-}
-catch (\ErrorException $error){
-
-}
 
 
+        $ip = $request->ip();
+        // ip resriction
+        $iprestriction = table::settings()->value('ip');
+
+        if ($session_id == null) {
+            return redirect()->back()->with(['error' => 'Sign in Failed! Please Provide a valid PIN.']);
+           /* return response()->json([
+                "error" => "Please provide a valid PIN."
+            ]);*/
+        }
+
+
+        elseif ($iprestriction != null) {
+            $ips = explode(",", $iprestriction);
+            if(in_array($ip, $ips) == false) {
+                return redirect()->back()->with(['error' => 'Whoops! You are not allowed to sign in from outside university network.']);
+                /*$msge = "Whoops! You are not allowed to Clock In or Out from your IP address ".$ip;
+                return response()->json([
+                    "error" => $msge,
+                ]);*/
+            }
+        }
+        else
+
+
+            $session_id = TimeTable::where('pin', $pin)->value('id');
         $attendance = new Attendance();
         $attendance->session_id = $session_id;
         $attendance->attendee_id = $attendee_id;
