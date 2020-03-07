@@ -39,9 +39,7 @@ class AttendanceController extends Controller
 
         if ($session_id == null) {
             return redirect()->back()->with(['error' => 'Sign in Failed! Please Provide a valid PIN.']);
-           /* return response()->json([
-                "error" => "Please provide a valid PIN."
-            ]);*/
+
         }
 
 
@@ -49,10 +47,7 @@ class AttendanceController extends Controller
             $ips = explode(",", $iprestriction);
             if(in_array($ip, $ips) == false) {
                 return redirect()->back()->with(['error' => 'Whoops! You are not allowed to sign in from outside university network.']);
-                /*$msge = "Whoops! You are not allowed to Clock In or Out from your IP address ".$ip;
-                return response()->json([
-                    "error" => $msge,
-                ]);*/
+
             }
         }
         else
@@ -74,5 +69,11 @@ class AttendanceController extends Controller
     {
         $attendances = Attendance::all();
         return view('attendanceReports', ['attendances' => $attendances]);
+    }
+
+    public function getViewStuReport($stu_id)
+    {
+        $report = Attendance::where('attendee_id', $stu_id)->get();
+        return view('myReports', ['report' => $report]);
     }
 }

@@ -143,6 +143,7 @@ Route::group(['middleware'=> ['web']], function (){
         'as' => 'logout'
     ]);
 
+    // testing library for QR code taken from ItSolutionStuff.com
     Route::get('qr-code-g', function () {
         \QrCode::size(500)
             ->format('png')
@@ -215,12 +216,8 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'AppController@getModuleLocation',
         'as' => 'addSession',
         'middleware' => 'roles',
-        'roles' => ['Lecturer']
+        'roles' => ['Lecturer', 'School Admin']
     ]);
-
-
-
-
 
 
 
@@ -236,7 +233,7 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'AppController@getmoduleStudents',
         'as' => 'moduleEnrolment',
         'middleware' => 'roles',
-        'roles' => ['Lecturer']
+        'roles' => ['Lecturer', 'School Admin']
     ]);
 
 
@@ -248,7 +245,7 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'SessionController@getViewSession',
         'as' => 'deleteSession',
         'middleware' => 'roles',
-        'roles' => ['Lecturer']
+        'roles' => ['Lecturer', 'School Admin']
     ]);
 
 
@@ -257,10 +254,10 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'SessionController@getDeleteSession',
         'as' => 'deleteSession.delete',
         'middleware' => 'roles',
-        'roles' => ['Lecturer']
+        'roles' => ['Lecturer', 'School Admin']
     ]);
 
-    // view for start page
+    // view for start session page
     Route::get('/lecturers/{teach_id}', [
         'uses' => 'SessionController@getViewLec',
         'as' => 'lecturers',
@@ -290,7 +287,7 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'EnrolmentController@getViewEnroll',
         'as' => 'disenrollStudents',
         'middleware' => 'roles',
-        'roles' => ['Lecturer']
+        'roles' => ['Lecturer', 'School Admin']
     ]);
 
     // Route to delete Students
@@ -298,7 +295,7 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'EnrolmentController@getDeleteEnrolled',
         'as' => 'disenrollStudents.delete',
         'middleware' => 'roles',
-        'roles' => ['Lecturer']
+        'roles' => ['Lecturer', 'School Admin']
     ]);
 
     // route for attendance signin
@@ -312,7 +309,7 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'AttendanceController@getViewReports',
         'as' => 'attendanceReports',
         'middleware' => 'roles',
-        'roles' => ['Lecturer']
+        'roles' => ['Lecturer', 'School Admin']
     ]);
 
     // Route to get settings/ip restrictions page
@@ -320,13 +317,21 @@ Route::group(['middleware'=> ['web']], function (){
         'uses' => 'SettingsController@getViewSettings',
         'as' => 'settings',
         'middleware' => 'roles',
-        'roles' => ['System Admin']
+        'roles' => ['System Admin', 'Lecturer', 'School Admin']
     ]);
 
     // route to post IP
     Route::post('/settings/addIP', [
         'uses' => 'SettingsController@postIp',
         'as' => 'settings.addIP'
+    ]);
+
+    // view single student report
+    Route::get('/myReports/{stu_id}', [
+        'uses' => 'AttendanceController@getViewStuReport',
+        'as' => 'myReports',
+        'middleware' => 'roles',
+        'roles' => ['Student']
     ]);
 
 });

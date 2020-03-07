@@ -19,8 +19,15 @@
     {!!  QrCode::size(300)->generate('https://newsite.local/students/attendanceSignIn?pin='.$lec->pin.'&status=1&attendee_id=') !!}
 
     <h1 class="text-center">PIN: {{$lec->pin}} </h1>
+                <div class="container-login100-form-btn m-t-32 hidden-print">
+                    <button class="login100-form-btn hidden-print d-print-none" onclick="myFunction()"> Print</button>
+                </div>
             </div>
         </div>
     </div>
-
+<script>
+    function myFunction() {
+        window.print();
+    }
+</script>
 @endsection

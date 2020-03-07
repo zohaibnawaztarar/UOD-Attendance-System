@@ -54,4 +54,20 @@ class User extends Model implements Authenticatable
     {
         return $this->hasMany('App\Attendance');
     }
+
+    public function isLecturer() {
+        return $this->roles()->where('name', 'lecturer')->exists();
+    }
+
+    public function isStudent() {
+        return $this->roles()->where('name', 'Student')->exists();
+    }
+
+    public function isSystemAdmin() {
+        return $this->roles()->where('name', 'System Admin')->exists();
+    }
+
+    public function isSchoolAdmin() {
+        return $this->roles()->where('name', 'School Admin')->exists();
+    }
 }

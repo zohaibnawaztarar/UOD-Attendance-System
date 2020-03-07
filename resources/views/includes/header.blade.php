@@ -36,6 +36,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('register') }}">Register</a></li>
                         {{--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('home') }}">Sign In</a></li>--}}
                     @else
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('logout') }}">Logout</a></li>
                     @endif
 
