@@ -24,6 +24,7 @@
             </tr>
             </thead>
             <tbody>
+            @isset($attendances)
             @foreach($attendances as $attendances)
                 <tr>
                     {{--<form action="{{ route('deleteLocation.delete', ['$attendances_id' => $attendances->id]) }}" method="get">--}}
@@ -43,6 +44,8 @@
                     {{--</form>--}}
                 </tr>
             @endforeach
+                @endisset
             </tbody>
         </table>
+
 @endsection
