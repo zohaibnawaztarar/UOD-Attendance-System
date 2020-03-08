@@ -334,6 +334,21 @@ Route::group(['middleware'=> ['web']], function (){
         'roles' => ['Student']
     ]);
 
+    // Route for manual sign in users
+
+    Route::post('/manualSignin', [
+        'uses' => 'AttendanceController@postManualAttendance',
+        'as' => 'manualSignin.Signin'
+    ]);
+
+    // route for manual sign in page
+    Route::get('/manualSignin', [
+        'uses' => 'AttendanceController@getStudents',
+        'as' => 'manualSignin',
+        'middleware' => 'roles',
+        'roles' => ['Lecturer']
+    ]);
+
 });
 
 /*Auth::routes(['verify' => true]);

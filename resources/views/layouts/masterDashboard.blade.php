@@ -193,6 +193,7 @@
                                 <a class="nav-link" href="{{ route('lecturers', ['teach_id' => Auth::user()->id]) }}">Start Sessions</a>
                                 <a class="nav-link" href="{{ route('addSession') }}">Add Sessions</a>
                                 <a class="nav-link" href="{{ route('deleteSession') }}">Delete Sessions</a>
+                                <a class="nav-link" href="{{ route('manualSignin') }}">Student Sign In</a>
                             </nav>
                         </div>
 
@@ -541,7 +542,17 @@
                 },
 
                 'colvis'
-            ]
+            ],
+            columnDefs: [ {
+                targets: [ 0 ],
+                orderData: [ 0, 1 ]
+            }, {
+                targets: [ 1 ],
+                orderData: [ 1, 0 ]
+            }, {
+                targets: [ 4 ],
+                orderData: [ 4, 0 ]
+            } ]
 
         } );
     } );
