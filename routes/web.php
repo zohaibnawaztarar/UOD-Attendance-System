@@ -349,6 +349,14 @@ Route::group(['middleware'=> ['web']], function (){
         'roles' => ['Lecturer']
     ]);
 
+
+    // route for Absent Attendance
+
+    Route::get('/students/attendanceAbsentSignIn', [
+        'uses' => 'AttendanceController@postAbsentAttendance',
+        'as' => 'students.attendanceAbsentSignIn'
+    ]);
+
 });
 
 /*Auth::routes(['verify' => true]);

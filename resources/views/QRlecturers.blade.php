@@ -24,6 +24,42 @@
                 </div>
             </div>
         </div>
+
+
+
+                {{-- Testing Absent below this part--}}
+        <div class="container-login100">
+            <div class="p-t-0 p-b-30">
+                <form action="{{route('students.attendanceAbsentSignIn')}}" method="get" class="">
+
+                    <input type="hidden" name="pin" placeholder="PIN" id="pin" value="{{$lec->pin}}">
+                    <input type="hidden" name="status" value="0">
+                    {{--attendee_id remove it from here--}}
+                    {{--<input type="hidden" name="attendee_id" value="{{Auth::user()->id}}">--}}
+
+                    <div class="container-login100-form-btn m-t-32">
+                        <button type="submit" class="login100-form-btn hidden-print d-print-none">
+                            Complete Attendance Collection
+                        </button>
+                        <br>
+                        <input type="hidden" name="_token" value="{{Session::token()}}">
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+                {{--Absent Testing Ends here--}}
+
+
+
+
+
+
+
+
+
+
+
     </div>
 <script>
     function myFunction() {
