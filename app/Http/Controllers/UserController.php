@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Attendance;
 use App\User;
 use App\Role;
 use App\Module;
@@ -275,6 +276,34 @@ class UserController extends Controller
             $check->student_id = $student_id;
             $check->save();
     }
+        ///////////////////////////
+
+        //$enrolment->save();
+
+        return redirect()->back()->with(['message' => 'Successfully Enrolled!']);
+    }
+
+    public function postManualAttendance(Request $request)
+    {
+        $this->validate($request, [
+            'Sess_id' => 'required|max:120',
+            'attendee_id' => 'required|max:120',
+        ]);
+        /*
+                $module_id = $request['module_id'];
+                $student_id = $request['student_id'];
+
+                $enrolment = new Enrolment();
+                $enrolment->module_id = $request->module_id;
+                $enrolment->student_id = $request->student_id;*/
+
+        ////////////////////////////
+        foreach($request->student_id as $student_id){
+            $check = new Attendance();
+            $check->module_id = $request->module_id;
+            $check->student_id = $student_id;
+            $check->save();
+        }
         ///////////////////////////
 
         //$enrolment->save();

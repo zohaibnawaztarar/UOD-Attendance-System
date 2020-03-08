@@ -54,7 +54,7 @@
                             <span class="focus-input100" data-placeholder="&#xe818;"></span>
                             <input type="hidden" name="attendee_id" value="{{Auth::user()->id}}">
                             <input type="hidden" name="status" value="1">
-                            <input type="hidden" name="session_id" value="2">
+                          {{--  <input type="hidden" name="session_id" value="2">--}}
 
                         </div>
 
@@ -72,10 +72,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
 
 
