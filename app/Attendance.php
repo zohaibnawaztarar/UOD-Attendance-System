@@ -5,7 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
+
+
 {
+    protected $fillable = ['session_id', 'attendee_id'];
+
     public function module()
     {
         return $this->belongsTo('App\Module', 'session_id');
