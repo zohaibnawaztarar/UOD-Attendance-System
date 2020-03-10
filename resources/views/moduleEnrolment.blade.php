@@ -36,6 +36,7 @@
                         <th>Student First Name</th>
                         <th>Student Last Name</th>
                         <th>Email</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -50,6 +51,7 @@
                                     </div></td>
                                 <td><label>{{$data->last_name}}</label></td>
                                 <td><label>{{$data->email}}</label></td>
+
                             </tr>
                 @endforeach
                 @endisset
