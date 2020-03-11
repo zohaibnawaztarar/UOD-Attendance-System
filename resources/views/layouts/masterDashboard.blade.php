@@ -82,96 +82,6 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    {{--<div class="sb-sidenav-menu-heading">-</div>--}}{{--
-                    <br>
-                    <a class="nav-link" href="{{ route('dashboard') }}"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard</a
-                    >
-                    <br>
-                    --}}{{--<div class="sb-sidenav-menu-heading">-</div>--}}{{--
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSchool" aria-expanded="false" aria-controls="collapseLayouts"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-school"></i></div>
-                        School Office
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                    <div class="collapse" id="collapseSchool" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('addSchoolStaff') }}">Add School Admin</a>
-                            <a class="nav-link" href="{{ route('systemAdmin') }}">Delete School Admin</a></nav>
-                    </div>
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLecturer" aria-expanded="false" aria-controls="collapseLayouts"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                        Teaching Staff
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                    <div class="collapse" id="collapseLecturer" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('addLecturer') }}">Add Lecturers</a>
-                            <a class="nav-link" href="{{ route('deleteLecturers') }}">Delete Lecturers</a></nav>
-                    </div>
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModules" aria-expanded="false" aria-controls="collapseLayouts"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-                        Modules
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                    <div class="collapse" id="collapseModules" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('addModule') }}">Add Modules</a>
-                            <a class="nav-link" href="{{ route('deleteModule') }}">Delete Modules</a></nav>
-                    </div>
-
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLayouts"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
-                        Locations
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                    <div class="collapse" id="collapseLocation" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('addLocation') }}">Add Locations</a>
-                            <a class="nav-link" href="{{ route('deleteLocation') }}">Delete Locations</a></nav>
-                    </div>
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLecturers" aria-expanded="false" aria-controls="collapseLayouts"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                        Lecturers
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                    <div class="collapse" id="collapseLecturers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('lecturers', ['teach_id' => Auth::user()->id]) }}">Start Sessions</a>
-                            <a class="nav-link" href="{{ route('addSession') }}">Add Sessions</a>
-                            <a class="nav-link" href="{{ route('deleteSession') }}">Delete Sessions</a>
-                            <a class="nav-link" href="{{ route('moduleEnrolment') }}">Enrol Students</a>
-                            <a class="nav-link" href="{{ route('disenrollStudents') }}">Disenroll Students</a>
-                            <a class="nav-link" href="{{ route('attendanceReports') }}">Attendance Reports</a>
-                        </nav>
-                    </div>
-
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudents" aria-expanded="false" aria-controls="collapseLayouts"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-user-graduate"></i></div>
-                        Student
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                    <div class="collapse" id="collapseStudents" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('students') }}">Sign Attendance</a>
-
-                    </div>
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseLayouts"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
-                        Settings
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                    <div class="collapse" id="collapseSettings" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('changePassword') }}">Change Password</a>
-                            <a class="nav-link" href="{{ route('settings') }}">Restrict IPs</a>
-
-                    </div>
-
-                    <a class="nav-link" href="{{ route('logout') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-power-off"></i></div>
-                        Logout
-                    </a>--}}
 
 
 
@@ -192,7 +102,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{ route('lecturers', ['teach_id' => Auth::user()->id]) }}">Start Sessions</a>
                                 <a class="nav-link" href="{{ route('addSession') }}">Add Sessions</a>
-                                <a class="nav-link" href="{{ route('deleteSession') }}">Delete Sessions</a>
+                                <a class="nav-link" href="{{ route('deleteSession') }}">View or Delete Sessions</a>
                                 <a class="nav-link" href="{{ route('manualSignin') }}">Student Sign In</a>
                             </nav>
                         </div>
@@ -205,7 +115,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
 
                                 <a class="nav-link" href="{{ route('moduleEnrolment') }}">Enrol Students</a>
-                                <a class="nav-link" href="{{ route('disenrollStudents') }}">Disenroll Students</a>
+                                <a class="nav-link" href="{{ route('disenrollStudents') }}">View or Disenroll Students</a>
 
                             </nav>
                         </div>
@@ -313,7 +223,7 @@
                         <div class="collapse" id="collapseLecturer" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{ route('addLecturer') }}">Add Lecturers</a>
-                                <a class="nav-link" href="{{ route('deleteLecturers') }}">Delete Lecturers</a></nav>
+                                <a class="nav-link" href="{{ route('deleteLecturers') }}">View or Delete Lecturers</a></nav>
                         </div>
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModules" aria-expanded="false" aria-controls="collapseLayouts"
@@ -323,7 +233,7 @@
                         <div class="collapse" id="collapseModules" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{ route('addModule') }}">Add Modules</a>
-                                <a class="nav-link" href="{{ route('deleteModule') }}">Delete Modules</a></nav>
+                                <a class="nav-link" href="{{ route('deleteModule') }}">View or Delete Modules</a></nav>
                         </div>
 
 
@@ -334,7 +244,7 @@
                         <div class="collapse" id="collapseLocation" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{ route('addLocation') }}">Add Locations</a>
-                                <a class="nav-link" href="{{ route('deleteLocation') }}">Delete Locations</a></nav>
+                                <a class="nav-link" href="{{ route('deleteLocation') }}">View or Delete Locations</a></nav>
                         </div>
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEnrol" aria-expanded="false" aria-controls="collapseLayouts"
@@ -345,7 +255,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
 
                                 <a class="nav-link" href="{{ route('moduleEnrolment') }}">Enrol Students</a>
-                                <a class="nav-link" href="{{ route('disenrollStudents') }}">Disenroll Students</a>
+                                <a class="nav-link" href="{{ route('disenrollStudents') }}">View or Disenroll Students</a>
 
                             </nav>
                         </div>
@@ -359,7 +269,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
 
                                 <a class="nav-link" href="{{ route('addSession') }}">Add Sessions</a>
-                                <a class="nav-link" href="{{ route('deleteSession') }}">Delete Sessions</a>
+                                <a class="nav-link" href="{{ route('deleteSession') }}">View or Delete Sessions</a>
                             </nav>
                         </div>
 
@@ -411,7 +321,7 @@
                         <div class="collapse" id="collapseSchool" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{ route('addSchoolStaff') }}">Add School Admin</a>
-                                <a class="nav-link" href="{{ route('systemAdmin') }}">Delete School Admin</a></nav>
+                                <a class="nav-link" href="{{ route('systemAdmin') }}">View or Delete School Admins</a></nav>
                         </div>
 
 
